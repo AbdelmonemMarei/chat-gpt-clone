@@ -1,4 +1,4 @@
-export type Model = 'gpt-4o-mini' | 'gpt-3.5-turbo' | 'gemini-pro' | 'deepseek-chat';
+export type Model = 'gpt-4o-mini' | 'gpt-3.5-turbo' | 'gemini-Flash' | 'deepseek-chat';
 
 export interface Message {
   id: string;
