@@ -8,7 +8,7 @@ export function getApiClient(model: Model): ApiClient {
     case 'gpt-4o-mini':
     case 'gpt-3.5-turbo':
       return new OpenAIClient(model);
-    case 'gemini-pro':
+    case 'gemini-Flash':
       return new GeminiClient();
     case 'deepseek-chat':
       return new DeepSeekClient();
