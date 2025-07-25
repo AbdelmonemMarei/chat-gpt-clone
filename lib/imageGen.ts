@@ -50,9 +50,7 @@ export async function generateImageWithHiDream(prompt: string): Promise<string> 
   }
 
   try {
-    const replicate = new Replicate({
-      auth: apiKey,
-    });
+    const replicate = new Replicate({ auth: apiKey });
 
     const input = {
       seed: Math.floor(Math.random() * 1000000),
@@ -61,17 +59,16 @@ export async function generateImageWithHiDream(prompt: string): Promise<string> 
       output_quality: 80
     };
 
-    // Using HiDream model
     const output = await replicate.run(
       "prunaai/hidream-l1-full:03d58532fd29e39fd2ed80e86c3da1cebec28ef2734081cf1366710d30388f42",
       { input }
-    ) as string;
+    ) as string[];
 
-    if (!output) {
+    if (!output || !output[0]) {
       throw new Error('No image generated');
     }
 
-    return output;
+    return output[0];
   } catch (error) {
     console.error('HiDream image generation error:', error);
     throw new Error(`Failed to generate image with HiDream: ${error instanceof Error ? error.message : 'Unknown error'}`);
